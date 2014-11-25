@@ -50,8 +50,7 @@ PRODUCT_COPY_FILES += \
 
 # Trim Area daemon
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
-    $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
+    $(LOCAL_PATH)/rootdir/sbin/tad_static:system/bin/tad_static
 
 # Key layouts
 PRODUCT_COPY_FILES += \
