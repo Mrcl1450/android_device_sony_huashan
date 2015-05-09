@@ -94,8 +94,11 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/sensors.conf:system/etc/sensors.conf \
-    $(LOCAL_PATH)/rootdir/system/etc/sap.conf:system/etc/sap.conf
+    $(LOCAL_PATH)/rootdir/system/etc/sensors.conf:system/etc/sensors.conf
+
+# Thermal monitor configuration
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/thermanager.xml:system/etc/thermanager.xml
 
 # SEC Config
 PRODUCT_COPY_FILES += \
@@ -104,10 +107,6 @@ PRODUCT_COPY_FILES += \
 # HW Settings
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/hw_config.sh:system/etc/hw_config.sh
-
-# Sony system_monitor
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/sysmon.cfg:system/etc/sysmon.cfg
 
 # NFC Support
 PRODUCT_PACKAGES += \
@@ -172,7 +171,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    sensors.default
+    sensors.msm8960
+
+# Thermal management
+PRODUCT_PACKAGES += \
+    thermanager
 
 # Wifi service
 PRODUCT_PACKAGES += \

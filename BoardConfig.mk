@@ -135,7 +135,6 @@ BOARD_SEPOLICY_UNION += \
     setup_fs.te \
     surfaceflinger.te \
     system_app.te \
-    system_monitor.te \
     system_server.te \
     tad_static.te \
     ta_qmi_service.te \
