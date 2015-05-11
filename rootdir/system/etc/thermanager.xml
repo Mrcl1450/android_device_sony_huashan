@@ -7,13 +7,6 @@
 		<resource name="zone3" type="tz">/sys/class/thermal/thermal_zone3</resource>
 		<resource name="zone4" type="tz">/sys/class/thermal/thermal_zone4</resource>
 		<resource name="zone5" type="tz">/sys/class/thermal/thermal_zone5</resource>
-		<resource name="zone6" type="tz">/sys/class/thermal/thermal_zone6</resource>
-		<resource name="zone7" type="tz">/sys/class/thermal/thermal_zone7</resource>
-		<resource name="zone8" type="tz">/sys/class/thermal/thermal_zone8</resource>
-		<resource name="zone9" type="tz">/sys/class/thermal/thermal_zone9</resource>
-		<resource name="zone10" type="tz">/sys/class/thermal/thermal_zone10</resource>
-		<resource name="zone11" type="tz">/sys/class/thermal/thermal_zone11</resource>
-		<resource name="zone12" type="tz">/sys/class/thermal/thermal_zone12</resource>
 
 		<resource name="pm8921-usb" type="sysfs">/sys/module/pm8921_charger/parameters/usb_max_current</resource>
 		<resource name="pm8921-chg" type="sysfs">/sys/module/pm8921_charger/parameters/thermal_mitigation</resource>
@@ -35,7 +28,7 @@
 
 		<!-- device-specific aliases -->
 		<resource name="temp-cpu0" type="alias" resource="zone0" />
-		<resource name="temp-cpu1" type="alias" resource="zone1" />
+		<resource name="temp-cpu1" type="alias" resource="zone3" />
 
 		<resource name="charger" type="alias" resource="pm8921-chg" />
 		<resource name="usb" type="alias" resource="pm8921-usb" />
@@ -61,7 +54,6 @@
 		<resource name="temp-core" type="union">
 			<resource name="temp-xo" />
                         <resource name="temp-pmic" />
-                        <resource name="temp-batt" />
 		</resource>
 
 		<resource name="shutdown" type="halt" delay="5" />
