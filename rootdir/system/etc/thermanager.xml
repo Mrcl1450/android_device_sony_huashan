@@ -7,6 +7,13 @@
 		<resource name="zone3" type="tz">/sys/class/thermal/thermal_zone3</resource>
 		<resource name="zone4" type="tz">/sys/class/thermal/thermal_zone4</resource>
 		<resource name="zone5" type="tz">/sys/class/thermal/thermal_zone5</resource>
+		<resource name="zone6" type="tz">/sys/class/thermal/thermal_zone6</resource>
+		<resource name="zone7" type="tz">/sys/class/thermal/thermal_zone7</resource>
+		<resource name="zone8" type="tz">/sys/class/thermal/thermal_zone8</resource>
+		<resource name="zone9" type="tz">/sys/class/thermal/thermal_zone9</resource>
+		<resource name="zone10" type="tz">/sys/class/thermal/thermal_zone10</resource>
+		<resource name="zone11" type="tz">/sys/class/thermal/thermal_zone11</resource>
+		<resource name="zone12" type="tz">/sys/class/thermal/thermal_zone12</resource>
 
 		<resource name="pm8921-usb" type="sysfs">/sys/module/pm8921_charger/parameters/usb_max_current</resource>
 		<resource name="pm8921-chg" type="sysfs">/sys/module/pm8921_charger/parameters/thermal_mitigation</resource>
