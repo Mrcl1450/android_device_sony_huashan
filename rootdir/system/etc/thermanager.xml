@@ -46,7 +46,7 @@
 		</resource>
 
 		<resource name="temp-extra" type="union">
-			<resource name="zone2" />
+			<resource name="zone1" />
 			<resource name="zone4" />
 			<resource name="zone5" />
 		</resource>
