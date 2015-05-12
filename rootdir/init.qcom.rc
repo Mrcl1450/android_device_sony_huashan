@@ -98,10 +98,6 @@ on early-boot
     write /sys/module/pm8921_charger/parameters/enable_lowbatt_detect 1
 
 on boot
-    
-    # load custom kernel modules
-    insmod /system/lib/modules/cpufreq_wheatley.ko
-    
     exec /system/bin/btnvtool -O
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
