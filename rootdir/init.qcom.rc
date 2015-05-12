@@ -585,19 +585,9 @@ service setup_fs /system/bin/setup_fs /dev/block/platform/msm_sdcc.1/by-name/Use
     group root
     oneshot
 
-# Xperia SP glove mod enabled
-on property:sys.boot_completed=1
-    chmod 664 /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity
-    chmod 664 /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold
-    write /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold 280
-    exec /system/bin/glove_mode_set.sh
-
-on property:hw.glove.mod.perm.w.on=1
-    chmod 664 /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity
-    chmod 664 /sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/finger_threshold
-
-on property:hw.glove.mod.perm.w.on=0
-    exec hw.glove.mod.perm.w.on.sh
+# Glove input
+    chown system system /sys/devices/virtual/input/max1187x/glove
+    chmod 0660 /sys/devices/virtual/input/max1187x/glove
 
 on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
