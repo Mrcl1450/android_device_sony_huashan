@@ -25,7 +25,7 @@ import android.os.SystemProperties;
  */
 public class HighTouchSensitivity {
 
-    private static String GLOVE_PATH = "/sys/devices/i2c-3/3-0024/main_ttsp_core.cyttsp4_i2c_adapter/signal_disparity";
+    private static String GLOVE_PATH = "/sys/devices/virtual/input/max1187x/glove";
 
     /**
      * Whether device supports high touch sensitivity.
@@ -34,7 +34,6 @@ public class HighTouchSensitivity {
      */
     public static boolean isSupported() {
         File f = new File(GLOVE_PATH);
-        SystemProperties.set("hw.glove.mod.perm.w.on","1");
         return f.exists();
     }
 
@@ -59,7 +58,6 @@ public class HighTouchSensitivity {
      * failed; true in any other case.
      */
     public static boolean setEnabled(boolean status) {
-        SystemProperties.set("hw.glove.mod.perm.w.on","0");
         return FileUtils.writeLine(GLOVE_PATH, String.valueOf(status ? 0 : 1));
 
     }
