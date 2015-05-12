@@ -195,37 +195,37 @@
 		<threshold>
 			<mitigation name="backlight" level="off" />
 		</threshold>
-		<threshold trigger="43" clear="36">
+		<threshold trigger="43" clear="41">
 			<mitigation name="backlight" level="1" />
 		</threshold>
-		<threshold trigger="45" clear="37">
+		<threshold trigger="44" clear="42">
 			<mitigation name="backlight" level="2" />
 		</threshold>
-		<threshold trigger="46" clear="38">
+		<threshold trigger="45" clear="43">
 			<mitigation name="backlight" level="3" />
 		</threshold>
-		<threshold trigger="47" clear="39">
+		<threshold trigger="46" clear="44">
 			<mitigation name="backlight" level="4" />
 		</threshold>
-		<threshold trigger="48" clear="40">
+		<threshold trigger="47" clear="45">
 			<mitigation name="backlight" level="5" />
 		</threshold>
-		<threshold trigger="49" clear="41">
+		<threshold trigger="48" clear="46">
 			<mitigation name="backlight" level="6" />
 		</threshold>
-		<threshold trigger="50" clear="42">
+		<threshold trigger="49" clear="47">
 			<mitigation name="backlight" level="7" />
 		</threshold>
-		<threshold trigger="51" clear="43">
+		<threshold trigger="50" clear="48">
 			<mitigation name="backlight" level="8" />
 		</threshold>
-		<threshold trigger="52" clear="47">
+		<threshold trigger="52" clear="49">
 			<mitigation name="backlight" level="9" />
 		</threshold>
-		<threshold trigger="53" clear="48">
+		<threshold trigger="55" clear="51">
 			<mitigation name="backlight" level="10" />
 		</threshold>
-		<threshold trigger="55" clear="70">
+		<threshold trigger="68" clear="54">
 			<mitigation name="backlight" level="11" />
 		</threshold>
 	</configuration>
@@ -236,22 +236,22 @@
 			<mitigation name="cpu" level="off" />
 		</threshold>
 		<threshold trigger="90" clear="85">
+			<mitigation name="cpu" level="1" />
+		</threshold>
+		<threshold trigger="93" clear="89">
 			<mitigation name="cpu" level="3" />
 		</threshold>
-		<threshold trigger="95" clear="90">
+		<threshold trigger="96" clear="92">
+			<mitigation name="cpu" level="4" />
+		</threshold>
+		<threshold trigger="99" clear="95">
 			<mitigation name="cpu" level="6" />
 		</threshold>
-		<threshold trigger="100" clear="95">
+		<threshold trigger="102" clear="98">
 			<mitigation name="cpu" level="8" />
 		</threshold>
-		<threshold trigger="110" clear="105">
+		<threshold trigger="105" clear="101">
 			<mitigation name="cpu" level="9" />
-		</threshold>
-		<threshold trigger="115" clear="110">
-			<mitigation name="cpu" level="10" />
-		</threshold>
-		<threshold trigger="120" clear="115">
-			<mitigation name="cpu" level="12" />
 		</threshold>
 	</configuration>
 </thermanager>
