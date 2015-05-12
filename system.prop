@@ -13,10 +13,6 @@ persist.timed.enable=true
 #system prop for switching gps driver to qmi
 persist.gps.qmienabled=true
 
-# stirctmode
-persist.sys.strictmode.visual=0
-persist.sys.strictmode.disable=1
-
 # FM radio
 hw.fm.internal_antenna=true
 
