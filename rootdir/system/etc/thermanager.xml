@@ -15,8 +15,7 @@
 		<resource name="lcd-bl" type="sysfs">/sys/class/leds/lcd-backlight/max_brightness</resource>
 		<resource name="temp-batt" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/batt_therm</resource>
 		<resource name="temp-xo" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/xo_therm</resource>
-		<resource name="temp-pa0" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/pa_therm0</resource>
-		<resource name="temp-pa1" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/pa_therm1</resource>
+		<resource name="temp-pmic" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/pmic_therm</resource>
 
 		<!-- generic cpufreq -->
 		<resource name="cpu0" type="sysfs">/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq</resource>
@@ -52,14 +51,9 @@
 			<resource name="zone5" />
 		</resource>
 
-		<resource name="temp-pa" type="union">
-			<resource name="temp-pa0" />
-			<resource name="temp-pa1" />
-		</resource>
-
 		<resource name="temp-core" type="union">
 			<resource name="temp-xo" />
-                        <resource name=temp-pa />
+                        <resource name="temp-pmic" />
 		</resource>
 
 		<resource name="shutdown" type="halt" delay="5" />
@@ -185,7 +179,7 @@
 	</configuration>
 
 	<!-- GPU and modem -->
-	<configuration sensor="temp-pa">
+	<configuration sensor="temp-mic">
 		<threshold>
 			<mitigation name="gpu" level="off" />
 			<mitigation name="modem" level="off" />
