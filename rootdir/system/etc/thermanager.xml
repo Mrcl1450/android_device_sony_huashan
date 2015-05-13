@@ -179,7 +179,7 @@
 	</configuration>
 
 	<!-- GPU and modem -->
-	<configuration sensor="temp-mic">
+	<configuration sensor="temp-pmic">
 		<threshold>
 			<mitigation name="gpu" level="off" />
 			<mitigation name="modem" level="off" />
