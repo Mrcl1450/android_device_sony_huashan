@@ -231,26 +231,29 @@
 
 	<!-- CPU -->
 	<configuration sensor="temp-cpu">
-		<threshold>
+		<threshold trigger="65" clear="62">
 			<mitigation name="cpu" level="off" />
 		</threshold>
-		<threshold trigger="90" clear="85">
+		<threshold trigger="87" clear="84">
 			<mitigation name="cpu" level="1" />
 		</threshold>
-		<threshold trigger="93" clear="89">
+		<threshold trigger="90" clear="87">
 			<mitigation name="cpu" level="3" />
 		</threshold>
-		<threshold trigger="96" clear="92">
+		<threshold trigger="93" clear="90">
 			<mitigation name="cpu" level="4" />
 		</threshold>
-		<threshold trigger="99" clear="95">
+		<threshold trigger="96" clear="93">
 			<mitigation name="cpu" level="6" />
 		</threshold>
-		<threshold trigger="102" clear="98">
+		<threshold trigger="99" clear="96">
 			<mitigation name="cpu" level="8" />
 		</threshold>
-		<threshold trigger="105" clear="101">
+		<threshold trigger="102" clear="99">
 			<mitigation name="cpu" level="9" />
+		</threshold>
+		<threshold trigger="105" clear="102">
+			<mitigation name="cpu" level="12" />
 		</threshold>
 	</configuration>
 </thermanager>
