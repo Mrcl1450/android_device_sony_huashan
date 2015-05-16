@@ -101,24 +101,6 @@ on boot
 # Bring CPU online early
     write /sys/devices/system/cpu/cpu1/online 1
 
-# Thermanager
-
-	chmod 0644 /sys/module/pm8921_charger/parameters/usb_max_current
-	chmod 0644 /sys/module/pm8921_charger/parameters/thermal_mitigation
-	chmod 0644 /sys/devices/platform/wcnss_wlan.0/thermal_mitigation
-	chmod 0644 /sys/class/kgsl/kgsl-3d0/max_gpuclk
-	chmod 0644 /sys/class/leds/lcd-backlight/max_brightness
-	chmod 0644 /sys/bus/platform/devices/pm8xxx-adc/batt_therm
-	chmod 0644 /sys/bus/platform/devices/pm8xxx-adc/xo_therm
-	chmod 0644 /sys/bus/platform/devices/pm8xxx-adc/pmic_therm
-	chown system system /sys/module/pm8921_charger/parameters/usb_max_current
-	chown system system /sys/module/pm8921_charger/parameters/thermal_mitigation
-	chown system system /sys/devices/platform/wcnss_wlan.0/thermal_mitigation
-	chown system system /sys/class/kgsl/kgsl-3d0/max_gpuclk
-	chown system system /sys/class/leds/lcd-backlight/max_brightness
-	chown system system /sys/bus/platform/devices/pm8xxx-adc/batt_therm
-	chown system system /sys/bus/platform/devices/pm8xxx-adc/xo_therm
-	chown system system /sys/bus/platform/devices/pm8xxx-adc/pmic_therm
 
     exec /system/bin/btnvtool -O
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
