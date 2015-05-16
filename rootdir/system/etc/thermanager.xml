@@ -46,13 +46,13 @@
 			<resource name="temp-cpu1" />
 		</resource>
 
-		<resource name="temp-extra" type="union">
+		<resource name="temp-core" type="union">
 			<resource name="zone1" />
 			<resource name="zone4" />
 			<resource name="zone5" />
 		</resource>
 
-		<resource name="temp-core" type="union">
+		<resource name="temp-extra" type="union">
 			<resource name="temp-xo" />
                         <resource name="temp-pa0" />
                         <resource name="temp-pa1" />
@@ -133,22 +133,12 @@
 		<mitigation level="3"><value resource="charger">3</value></mitigation>
 	</control>
 
-	<!-- general purpose device protection -->
-	<configuration sensor="temp-extra">
-		<threshold>
-			<mitigation name="shutdown" level="off" />
-		</threshold>
-		<threshold trigger="120" clear="115">
-			<mitigation name="shutdown" level="1" />
-		</threshold>
-	</configuration>
-
 	<!-- burn-out protection -->
 	<configuration sensor="temp-core">
 		<threshold>
 			<mitigation name="shutdown" level="off" />
 		</threshold>
-		<threshold trigger="82" clear="80">
+		<threshold trigger="120" clear="115">
 			<mitigation name="shutdown" level="1" />
 		</threshold>
 	</configuration>
