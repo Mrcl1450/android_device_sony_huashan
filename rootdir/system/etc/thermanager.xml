@@ -138,7 +138,7 @@
 		<threshold>
 			<mitigation name="shutdown" level="off" />
 		</threshold>
-		<threshold trigger="120" clear="115">
+		<threshold trigger="900" clear="850">
 			<mitigation name="shutdown" level="1" />
 		</threshold>
 	</configuration>
