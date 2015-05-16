@@ -31,7 +31,7 @@
 		<resource name="temp-cpu0" type="alias" resource="zone0" />
 		<resource name="temp-cpu1" type="alias" resource="zone3" />
 
-		<resource name="charger" type="alias" resource="pm8921-chg" />
+		<resource name="charge" type="alias" resource="pm8921-chg" />
 		<resource name="usb" type="alias" resource="pm8921-usb" />
 		<resource name="gpu" type="alias" resource="kgsl-3d0" />
 		<resource name="wlan" type="alias" resource="wcnss-wlan" />
@@ -153,85 +153,68 @@
 		</threshold>
 	</configuration>
 
-	<!-- USB and charging -->
-	<configuration sensor="temp-xo">
-		<threshold>
-			<mitigation name="charging" level="off" />
-			<mitigation name="usb" level="off" />
-		</threshold>
-		<threshold trigger="51" clear="49">
-			<mitigation name="charging" level="off" />
-			<mitigation name="usb" level="2" />
-		</threshold>
-		<threshold trigger="53" clear="51">
-			<mitigation name="charging" level="off" />
-			<mitigation name="usb" level="3" />
-		</threshold>
-		<threshold trigger="55" clear="53">
-			<mitigation name="charging" level="3" />
-			<mitigation name="usb" level="3" />
-		</threshold>
-		<threshold trigger="57" clear="55">
-			<mitigation name="charging" level="3" />
-			<mitigation name="usb" level="4" />
-		</threshold>
-	</configuration>
-
-	<!-- GPU and modem -->
-	<configuration sensor="temp-xo">
-		<threshold>
-			<mitigation name="gpu" level="off" />
-			<mitigation name="modem" level="off" />
-		</threshold>
-		<threshold trigger="62" clear="60">
-			<mitigation name="gpu" level="1" />
-			<mitigation name="modem" level="1" />
-		</threshold>
-	</configuration>
-
-	<!-- backlight -->
+	<!-- backlight, USB, charging, camera and modem -->
 	<configuration sensor="temp-xo">
 		<threshold>
 			<mitigation name="backlight" level="off" />
+			<mitigation name="modem" level="off" />
+			<mitigation name="charge" level="off" />
+			<mitigation name="usb" level="off" />
+			<mitigation name="camera" level="off" />
 		</threshold>
-		<threshold trigger="43" clear="41">
+		<threshold trigger="440" clear="410">
 			<mitigation name="backlight" level="1" />
+			<mitigation name="charge" level="off" />
+			<mitigation name="usb" level="2" />
+			<mitigation name="camera" level="off" />
 		</threshold>
-		<threshold trigger="44" clear="42">
+		<threshold trigger="460" clear="440">
 			<mitigation name="backlight" level="2" />
+			<mitigation name="charge" level="off" />
+			<mitigation name="usb" level="2" />
+			<mitigation name="camera" level="off" />
 		</threshold>
-		<threshold trigger="45" clear="43">
+		<threshold trigger="470" clear="460">
 			<mitigation name="backlight" level="3" />
+			<mitigation name="charge" level="3" />
+			<mitigation name="usb" level="3" />
+			<mitigation name="camera" level="off" />
 		</threshold>
-		<threshold trigger="46" clear="44">
+		<threshold trigger="480" clear="470">
 			<mitigation name="backlight" level="4" />
+			<mitigation name="charge" level="3" />
+			<mitigation name="usb" level="4" />
+			<mitigation name="camera" level="off" />
 		</threshold>
-		<threshold trigger="47" clear="45">
+		<threshold trigger="500" clear="480">
 			<mitigation name="backlight" level="5" />
+			<mitigation name="charge" level="3" />
+			<mitigation name="usb" level="4" />
+			<mitigation name="camera" level="1" />
 		</threshold>
-		<threshold trigger="48" clear="46">
+		<threshold trigger="520" clear="500">
 			<mitigation name="backlight" level="6" />
+			<mitigation name="charge" level="3" />
+			<mitigation name="usb" level="4" />
+			<mitigation name="camera" level="1" />
 		</threshold>
-		<threshold trigger="49" clear="47">
+		<threshold trigger="550" clear="520">
 			<mitigation name="backlight" level="7" />
+			<mitigation name="charge" level="3" />
+			<mitigation name="usb" level="4" />
+			<mitigation name="camera" level="2" />
 		</threshold>
-		<threshold trigger="50" clear="48">
+		<threshold trigger="680" clear="550">
 			<mitigation name="backlight" level="8" />
-		</threshold>
-		<threshold trigger="52" clear="49">
-			<mitigation name="backlight" level="9" />
-		</threshold>
-		<threshold trigger="55" clear="51">
-			<mitigation name="backlight" level="10" />
-		</threshold>
-		<threshold trigger="68" clear="54">
-			<mitigation name="backlight" level="11" />
+			<mitigation name="charge" level="3" />
+			<mitigation name="usb" level="4" />
+			<mitigation name="camera" level="2" />
 		</threshold>
 	</configuration>
 
 	<!-- CPU -->
 	<configuration sensor="temp-cpu">
-		<threshold trigger="65" clear="62">
+		<threshold>
 			<mitigation name="cpu" level="off" />
 		</threshold>
 		<threshold trigger="87" clear="84">
