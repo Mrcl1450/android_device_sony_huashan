@@ -16,4 +16,7 @@ persist.gps.qmienabled=true
 # FM radio
 hw.fm.internal_antenna=true
 
+# Hardware codecs
+qcom.hw.aac.encoder=true
+
 ro.sf.lcd_density=320
