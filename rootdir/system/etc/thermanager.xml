@@ -8,11 +8,11 @@
 		<resource name="zone4" type="tz">/sys/class/thermal/thermal_zone4</resource>
 		<resource name="zone5" type="tz">/sys/class/thermal/thermal_zone5</resource>
 
-		<resource name="pm8921-usb" type="sysfs">/sys/module/pm8921_charger/parameters/usb_max_current</resource>
-		<resource name="pm8921-chg" type="sysfs">/sys/module/pm8921_charger/parameters/thermal_mitigation</resource>
-		<resource name="wcnss-wlan" type="sysfs">/sys/devices/platform/wcnss_wlan.0/thermal_mitigation</resource>
-		<resource name="kgsl-3d0" type="sysfs">/sys/class/kgsl/kgsl-3d0/max_gpuclk</resource>
-		<resource name="lcd-bl" type="sysfs">/sys/class/leds/lcd-backlight/max_brightness</resource>
+		<resource name="usb" type="sysfs">/sys/module/pm8921_charger/parameters/usb_max_current</resource>
+		<resource name="charger" type="sysfs">/sys/module/pm8921_charger/parameters/thermal_mitigation</resource>
+		<resource name="wlan" type="sysfs">/sys/devices/platform/wcnss_wlan.0/thermal_mitigation</resource>
+		<resource name="gpu" type="sysfs">/sys/class/kgsl/kgsl-3d0/max_gpuclk</resource>
+		<resource name="backlight" type="sysfs">/sys/class/leds/lcd-backlight/max_brightness</resource>
 		<resource name="temp-batt" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/batt_therm</resource>
 		<resource name="temp-xo" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/xo_therm</resource>
 		<resource name="temp-pa0" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/pa_therm0</resource>
@@ -30,12 +30,6 @@
 		<!-- device-specific aliases -->
 		<resource name="temp-cpu0" type="alias" resource="zone0" />
 		<resource name="temp-cpu1" type="alias" resource="zone3" />
-
-		<resource name="charge" type="alias" resource="pm8921-chg" />
-		<resource name="usb" type="alias" resource="pm8921-usb" />
-		<resource name="gpu" type="alias" resource="kgsl-3d0" />
-		<resource name="wlan" type="alias" resource="wcnss-wlan" />
-		<resource name="backlight" type="alias" resource="lcd-bl" />
 
 		<!-- TODO: -->
 		<resource name="camera" type="echo" />
@@ -126,7 +120,7 @@
 		<mitigation level="12"><value resource="shutdown" /></mitigation>
 	</control>
 
-	<control name="charging">
+	<control name="charge">
 		<mitigation level="off"><value resource="charger">0</value></mitigation>
 		<mitigation level="1"><value resource="charger">1</value></mitigation>
 		<mitigation level="2"><value resource="charger">2</value></mitigation>
