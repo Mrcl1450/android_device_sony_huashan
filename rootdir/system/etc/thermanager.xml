@@ -9,7 +9,7 @@
 		<resource name="zone5" type="tz">/sys/class/thermal/thermal_zone5</resource>
 
 		<resource name="usb" type="sysfs">/sys/module/pm8921_charger/parameters/usb_max_current</resource>
-		<resource name="charger" type="sysfs">/sys/module/pm8921_charger/parameters/thermal_mitigation</resource>
+		<resource name="charge" type="sysfs">/sys/module/pm8921_charger/parameters/thermal_mitigation</resource>
 		<resource name="wlan" type="sysfs">/sys/devices/platform/wcnss_wlan.0/thermal_mitigation</resource>
 		<resource name="gpu" type="sysfs">/sys/class/kgsl/kgsl-3d0/max_gpuclk</resource>
 		<resource name="backlight" type="sysfs">/sys/class/leds/lcd-backlight/max_brightness</resource>
@@ -121,10 +121,10 @@
 	</control>
 
 	<control name="charge">
-		<mitigation level="off"><value resource="charger">0</value></mitigation>
-		<mitigation level="1"><value resource="charger">1</value></mitigation>
-		<mitigation level="2"><value resource="charger">2</value></mitigation>
-		<mitigation level="3"><value resource="charger">3</value></mitigation>
+		<mitigation level="off"><value resource="charge">0</value></mitigation>
+		<mitigation level="1"><value resource="charge">1</value></mitigation>
+		<mitigation level="2"><value resource="charge">2</value></mitigation>
+		<mitigation level="3"><value resource="charge">3</value></mitigation>
 	</control>
 
 	<!-- burn-out protection -->
