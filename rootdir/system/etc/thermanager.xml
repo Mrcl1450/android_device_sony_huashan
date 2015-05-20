@@ -10,14 +10,10 @@
 
 		<resource name="usb" type="sysfs">/sys/module/pm8921_charger/parameters/usb_max_current</resource>
 		<resource name="charge" type="sysfs">/sys/module/pm8921_charger/parameters/thermal_mitigation</resource>
-		<resource name="wlan" type="sysfs">/sys/devices/platform/wcnss_wlan.0/thermal_mitigation</resource>
-		<resource name="gpu" type="sysfs">/sys/class/kgsl/kgsl-3d0/max_gpuclk</resource>
 		<resource name="backlight" type="sysfs">/sys/class/leds/lcd-backlight/max_brightness</resource>
-		<resource name="temp-batt" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/batt_therm</resource>
 		<resource name="temp-xo" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/xo_therm</resource>
-		<resource name="temp-pa0" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/pa_therm0</resource>
-		<resource name="temp-pa1" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/pa_therm1</resource>
-
+		<resource name="temp-pa" type="msm-adc">/sys/bus/platform/devices/pm8xxx-adc/pa_therm0</resource>
+		
 		<!-- generic cpufreq -->
 		<resource name="cpu0" type="sysfs">/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq</resource>
 		<resource name="cpu1" type="sysfs">/sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq</resource>
@@ -31,37 +27,23 @@
 		<resource name="temp-cpu0" type="alias" resource="zone0" />
 		<resource name="temp-cpu1" type="alias" resource="zone3" />
 
-		<!-- TODO: -->
-		<resource name="camera" type="echo" />
-		<resource name="modem" type="echo" />
-
 		<resource name="temp-cpu" type="union">
 			<resource name="temp-cpu0" />
 			<resource name="temp-cpu1" />
 		</resource>
 
-		<resource name="temp-core" type="union">
-			<resource name="zone1" />
-			<resource name="zone4" />
+		<resource name="temp-extra" type="union">
 			<resource name="zone5" />
 		</resource>
 
-		<resource name="temp-extra" type="union">
-			<resource name="temp-xo" />
-                        <resource name="temp-pa0" />
-                        <resource name="temp-pa1" />
-		</resource>
+		<resource name="temp-core" type="union">
+			<resource name="temp-pa" />
+			<resource name="zone1" />
+			<resource name="zone4" />
+        </resource>
 
 		<resource name="shutdown" type="halt" delay="5" />
 	</resources>
-
-	<control name="wlan">
-		<mitigation level="off"><value resource="wlan">0</value></mitigation>
-		<mitigation level="1"><value resource="wlan">1</value></mitigation>
-		<mitigation level="2"><value resource="wlan">2</value></mitigation>
-		<mitigation level="3"><value resource="wlan">3</value></mitigation>
-		<mitigation level="4"><value resource="wlan">4</value></mitigation>
-	</control>
 
 	<control name="usb">
 		<mitigation level="off"><value resource="usb">1500</value></mitigation>
@@ -69,17 +51,6 @@
 		<mitigation level="2"><value resource="usb">900</value></mitigation>
 		<mitigation level="3"><value resource="usb">700</value></mitigation>
 		<mitigation level="4"><value resource="usb">500</value></mitigation>
-	</control>
-
-	<control name="modem">
-		<mitigation level="off"><value resource="modem">0</value></mitigation>
-		<mitigation level="1"><value resource="modem">1</value></mitigation>
-	</control>
-
-	<control name="camera">
-		<mitigation level="off"><value resource="camera">NORMAL</value></mitigation>
-		<mitigation level="1"><value resource="camera">WARNING</value></mitigation>
-		<mitigation level="2"><value resource="camera">CRITICAL</value></mitigation>
 	</control>
 
 	<control name="shutdown">
@@ -97,11 +68,6 @@
 		<mitigation level="6"><value resource="backlight">200</value></mitigation>
 		<mitigation level="7"><value resource="backlight">190</value></mitigation>
 		<mitigation level="8"><value resource="backlight">183</value></mitigation>
-	</control>
-
-	<control name="gpu">
-		<mitigation level="off"><value resource="gpu">400000000</value></mitigation>
-		<mitigation level="1"><value resource="gpu">200000000</value></mitigation>
 	</control>
 
 	<control name="cpu">
@@ -132,73 +98,65 @@
 		<threshold>
 			<mitigation name="shutdown" level="off" />
 		</threshold>
-		<threshold trigger="900" clear="850">
+		<threshold trigger="110" clear="105">
 			<mitigation name="shutdown" level="1" />
 		</threshold>
 	</configuration>
 
-	<!-- backlight, USB, charging, camera and modem -->
-	<configuration sensor="temp-xo">
-		<threshold>
+	<!-- backlight, modem, camera, usb and charging -->
+	<configuration sensor="temp-pa">
+			<threshold>
 			<mitigation name="backlight" level="off" />
 			<mitigation name="modem" level="off" />
 			<mitigation name="charge" level="off" />
 			<mitigation name="usb" level="off" />
 			<mitigation name="camera" level="off" />
 		</threshold>
-		<threshold trigger="440" clear="410">
+		<threshold trigger="44" clear="41">
 			<mitigation name="backlight" level="1" />
 			<mitigation name="charge" level="off" />
 			<mitigation name="usb" level="2" />
-			<mitigation name="camera" level="off" />
 		</threshold>
-		<threshold trigger="460" clear="440">
+		<threshold trigger="46" clear="44">
 			<mitigation name="backlight" level="2" />
 			<mitigation name="charge" level="off" />
 			<mitigation name="usb" level="2" />
-			<mitigation name="camera" level="off" />
 		</threshold>
-		<threshold trigger="470" clear="460">
+		<threshold trigger="47" clear="46">
 			<mitigation name="backlight" level="3" />
 			<mitigation name="charge" level="3" />
 			<mitigation name="usb" level="3" />
-			<mitigation name="camera" level="off" />
 		</threshold>
-		<threshold trigger="480" clear="470">
+		<threshold trigger="48" clear="47">
 			<mitigation name="backlight" level="4" />
 			<mitigation name="charge" level="3" />
 			<mitigation name="usb" level="4" />
-			<mitigation name="camera" level="off" />
 		</threshold>
-		<threshold trigger="500" clear="480">
+		<threshold trigger="50" clear="48">
 			<mitigation name="backlight" level="5" />
 			<mitigation name="charge" level="3" />
 			<mitigation name="usb" level="4" />
-			<mitigation name="camera" level="1" />
 		</threshold>
-		<threshold trigger="520" clear="500">
+		<threshold trigger="52" clear="50">
 			<mitigation name="backlight" level="6" />
 			<mitigation name="charge" level="3" />
 			<mitigation name="usb" level="4" />
-			<mitigation name="camera" level="1" />
 		</threshold>
-		<threshold trigger="550" clear="520">
+		<threshold trigger="55" clear="52">
 			<mitigation name="backlight" level="7" />
 			<mitigation name="charge" level="3" />
 			<mitigation name="usb" level="4" />
-			<mitigation name="camera" level="2" />
 		</threshold>
-		<threshold trigger="680" clear="550">
+		<threshold trigger="68" clear="55">
 			<mitigation name="backlight" level="8" />
 			<mitigation name="charge" level="3" />
 			<mitigation name="usb" level="4" />
-			<mitigation name="camera" level="2" />
 		</threshold>
 	</configuration>
 
 	<!-- CPU -->
 	<configuration sensor="temp-cpu">
-		<threshold>
+		<threshold trigger="62" clear="65">
 			<mitigation name="cpu" level="off" />
 		</threshold>
 		<threshold trigger="87" clear="84">
