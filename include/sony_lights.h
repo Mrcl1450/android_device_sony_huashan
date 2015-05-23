@@ -17,14 +17,5 @@
 char const*const LCD_BACKLIGHT_FILE  = "/sys/devices/i2c-10/10-0040/leds/lcd-backlight1/brightness";
 char const*const LCD_BACKLIGHT2_FILE = "/sys/devices/i2c-10/10-0040/leds/lcd-backlight2/brightness";
 char const*const MAX_BRIGHTNESS_FILE = "/sys/devices/i2c-10/10-0040/leds/lcd-backlight1/max_brightness";
-char const*const RED_LED_FILE        = "/sys/class/leds/LED1_R/brightness";
-char const*const GREEN_LED_FILE      = "/sys/class/leds/LED1_G/brightness";
-char const*const BLUE_LED_FILE       = "/sys/class/leds/LED1_B/brightness";
 
-char const*const LED_FILE_PATTERN[]		= {
-"/sys/class/leds/as3677::rgb1/use_pattern",
-"/sys/class/leds/as3677::rgb2/use_pattern",
-"/sys/class/leds/as3677::rgb3/use_pattern",
-};
-
-char const*const PATTERNOFF			= "0,0,0,0";
+const int LCD_BRIGHTNESS_MIN         = 1;
