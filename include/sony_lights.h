@@ -18,4 +18,25 @@ char const*const LCD_BACKLIGHT_FILE  = "/sys/devices/i2c-10/10-0040/leds/lcd-bac
 char const*const LCD_BACKLIGHT2_FILE = "/sys/devices/i2c-10/10-0040/leds/lcd-backlight2/brightness";
 char const*const MAX_BRIGHTNESS_FILE = "/sys/devices/i2c-10/10-0040/leds/lcd-backlight1/max_brightness";
 
+char const*const RED1_LED_FILE       = "/sys/class/leds/LED1_R/brightness";
+char const*const RED2_LED_FILE       = "/sys/class/leds/LED2_R/brightness";
+char const*const RED3_LED_FILE       = "/sys/class/leds/LED3_R/brightness";
+char const*const RED1C_LED_FILE      = "/sys/class/leds/LED1_R/led_current";
+char const*const RED2C_LED_FILE      = "/sys/class/leds/LED2_R/led_current";
+char const*const RED3C_LED_FILE      = "/sys/class/leds/LED3_R/led_current";
+
+char const*const GREEN1_LED_FILE     = "/sys/class/leds/LED1_G/brightness";
+char const*const GREEN2_LED_FILE     = "/sys/class/leds/LED2_G/brightness";
+char const*const GREEN3_LED_FILE     = "/sys/class/leds/LED3_G/brightness";
+char const*const GREEN1C_LED_FILE    = "/sys/class/leds/LED1_G/led_current";
+char const*const GREEN2C_LED_FILE    = "/sys/class/leds/LED2_G/led_current";
+char const*const GREEN3C_LED_FILE    = "/sys/class/leds/LED3_G/led_current";
+
+char const*const BLUE1_LED_FILE      = "/sys/class/leds/LED1_B/brightness";
+char const*const BLUE2_LED_FILE      = "/sys/class/leds/LED2_B/brightness";
+char const*const BLUE3_LED_FILE      = "/sys/class/leds/LED3_B/brightness";
+char const*const BLUE1C_LED_FILE     = "/sys/class/leds/LED1_B/led_current";
+char const*const BLUE2C_LED_FILE     = "/sys/class/leds/LED2_B/led_current";
+char const*const BLUE3C_LED_FILE     = "/sys/class/leds/LED3_B/led_current";
+
 const int LCD_BRIGHTNESS_MIN         = 1;

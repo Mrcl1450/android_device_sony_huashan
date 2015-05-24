@@ -107,9 +107,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/hw_config.sh:system/etc/hw_config.sh
 
-# Sony system_monitor
+# Thermal monitor configuration
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/sysmon.cfg:system/etc/sysmon.cfg
+    $(LOCAL_PATH)/rootdir/system/etc/thermanager.xml:system/etc/thermanager.xml
 
 # NFC Support
 PRODUCT_PACKAGES += \
@@ -175,6 +175,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.default
+
+# Thermal management
+PRODUCT_PACKAGES += \
+    thermanager
 
 # Wifi service
 PRODUCT_PACKAGES += \
