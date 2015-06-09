@@ -3,19 +3,29 @@ set +x
 _PATH="$PATH"
 export PATH=/sbin
 
-# leds paths
+## leds paths
+
+# Where LED 1 is the Left LED
+# Where LED 2 is the Right LEF
+# Where LED 3 is the Centre LED
+
+# Red Colour
 LED1_R_BRIGHTNESS_FILE="/sys/class/leds/LED1_R/brightness"
 LED2_R_BRIGHTNESS_FILE="/sys/class/leds/LED2_R/brightness"
 LED3_R_BRIGHTNESS_FILE="/sys/class/leds/LED3_R/brightness"
 LED1_R_CURRENT_FILE="/sys/class/leds/LED1_R/led_current"
 LED2_R_CURRENT_FILE="/sys/class/leds/LED2_R/led_current"
 LED3_R_CURRENT_FILE="/sys/class/leds/LED3_R/led_current"
+
+# Green Colour
 LED1_G_BRIGHTNESS_FILE="/sys/class/leds/LED1_G/brightness"
 LED2_G_BRIGHTNESS_FILE="/sys/class/leds/LED2_G/brightness"
 LED3_G_BRIGHTNESS_FILE="/sys/class/leds/LED3_G/brightness"
 LED1_G_CURRENT_FILE="/sys/class/leds/LED1_G/led_current"
 LED2_G_CURRENT_FILE="/sys/class/leds/LED2_G/led_current"
 LED3_G_CURRENT_FILE="/sys/class/leds/LED3_G/led_current"
+
+# Blue Colour
 LED1_B_BRIGHTNESS_FILE="/sys/class/leds/LED1_B/brightness"
 LED2_B_BRIGHTNESS_FILE="/sys/class/leds/LED2_B/brightness"
 LED3_B_BRIGHTNESS_FILE="/sys/class/leds/LED3_B/brightness"
