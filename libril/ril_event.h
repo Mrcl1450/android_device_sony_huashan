@@ -1,6 +1,6 @@
 /* //device/libs/telephony/ril_event.h
 **
-** Copyright 2008, The Android Open Source Project
+** Copyright 2008-2015, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.

@@ -12,10 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Override Perfd-Client Lib
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so
 
-# inherit from msm8960-common
+# Inherit from msm8960-common
 $(call inherit-product, device/sony/msm8960-common/msm8960.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/sony/huashan/overlay
@@ -243,8 +244,8 @@ PRODUCT_PACKAGES += libtime_genoff
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608
 
-# call dalvik heap config
+# Call dalvik heap config if it is available
 $(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-# Include non-opensource parts
+# Include non-opensource parts from vendor
 $(call inherit-product, vendor/sony/huashan/huashan-vendor.mk)

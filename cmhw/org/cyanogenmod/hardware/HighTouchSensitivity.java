@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2015 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,8 @@ public class HighTouchSensitivity {
     private static final int HIGHTOUCHSENSITIVITY_SIGNAL_DISPARITY_ON_READ = 0;
 
     /**
-     * Whether device supports high touch sensitivity.
+     * This is where we define whether the device supports high touch sensitivity.
+	 * Huashan does support the high touch sensitivity function
      *
      * @return boolean Supported devices must return always true
      */
@@ -68,7 +69,7 @@ public class HighTouchSensitivity {
     }
 
     /**
-     * This method allows to setup high touch sensitivity status.
+     * This method allows the user to setup high touch sensitivity status.
      *
      * @param status The new high touch sensitivity status
      * @return boolean Must be false if high touch sensitivity is not supported or the operation

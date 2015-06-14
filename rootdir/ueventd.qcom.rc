@@ -1,5 +1,5 @@
-# Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
-# Copyright (c) 2013 Sony Mobile Communications AB.
+# Copyright (c) 2012-2015, The Linux Foundation. All rights reserved.
+# Copyright (c) 2013-2015 Sony Mobile Communications AB.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -26,7 +26,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-#permissions for sensors
+# Permissions for sensors
 /sys/devices/virtual/input/input*   bma250_rate        0640  system   system
 
 # Permissions for AKM8963 sensor
@@ -124,7 +124,7 @@
 /dev/msm_rotator          0660   system     system
 /dev/hw_random            0660   system     system
 
-#permissions for audio
+# Permissions for audio
 /dev/msm_qcelp            0660   system     audio
 /dev/msm_evrc             0660   system     audio
 /dev/msm_wma              0660   system     audio
@@ -163,7 +163,7 @@
 /dev/dvb/adapter0/dvr*    0664   media       media
 /dev/dvb/adapter0/video*  0664   media       media
 
-# native sensors
+# Native sensors
 /sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
 /sys/devices/i2c-12/12-*  enable  0664 system system
 /sys/devices/i2c-12/12-*  poll_delay 0664 system system
@@ -202,7 +202,7 @@
 # NFC
 /dev/pn544                0600   nfc         nfc
 
-# wlan
+# Wlan
 /dev/rfkill               0660   root       wifi
 /dev/wcnss_wlan           0660   system     system
 /dev/wcnss_ctrl           0660   system     system

@@ -1,4 +1,4 @@
-# Copyright 2006 The Android Open Source Project
+# Copyright 2006-2015 The Android Open Source Project
 
 ifeq ($(BOARD_PROVIDES_LIBRIL),true)
 

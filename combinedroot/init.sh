@@ -3,54 +3,72 @@ set +x
 _PATH="$PATH"
 export PATH=/sbin
 
-# leds paths
+#
+# LED Paths definition
+#
+
+# Here we define the Current and Brightness files for the device
+# The definition is organized by colour and in the order of LED1 to LED 3
+
+# Red LED Brightness
 LED1_R_BRIGHTNESS_FILE="/sys/class/leds/LED1_R/brightness"
 LED2_R_BRIGHTNESS_FILE="/sys/class/leds/LED2_R/brightness"
 LED3_R_BRIGHTNESS_FILE="/sys/class/leds/LED3_R/brightness"
+
+# Red LED Current
 LED1_R_CURRENT_FILE="/sys/class/leds/LED1_R/led_current"
 LED2_R_CURRENT_FILE="/sys/class/leds/LED2_R/led_current"
 LED3_R_CURRENT_FILE="/sys/class/leds/LED3_R/led_current"
+
+# Green LED Brightness
 LED1_G_BRIGHTNESS_FILE="/sys/class/leds/LED1_G/brightness"
 LED2_G_BRIGHTNESS_FILE="/sys/class/leds/LED2_G/brightness"
 LED3_G_BRIGHTNESS_FILE="/sys/class/leds/LED3_G/brightness"
+
+# Green LED Current
 LED1_G_CURRENT_FILE="/sys/class/leds/LED1_G/led_current"
 LED2_G_CURRENT_FILE="/sys/class/leds/LED2_G/led_current"
 LED3_G_CURRENT_FILE="/sys/class/leds/LED3_G/led_current"
+
+# Blue LED Brightness
 LED1_B_BRIGHTNESS_FILE="/sys/class/leds/LED1_B/brightness"
 LED2_B_BRIGHTNESS_FILE="/sys/class/leds/LED2_B/brightness"
 LED3_B_BRIGHTNESS_FILE="/sys/class/leds/LED3_B/brightness"
+
+# Blue LED Current
 LED1_B_CURRENT_FILE="/sys/class/leds/LED1_B/led_current"
 LED2_B_CURRENT_FILE="/sys/class/leds/LED2_B/led_current"
 LED3_B_CURRENT_FILE="/sys/class/leds/LED3_B/led_current"
 
+# Initial Boot
 busybox cd /
 busybox date >>boot.txt
 exec >>boot.txt 2>&1
 busybox rm /init
 
-# include device specific vars
+# Include device specific vars
 source /sbin/bootrec-device
 
-# create directories
+# Create directories
 busybox mkdir -m 755 -p /dev/block
 busybox mkdir -m 755 -p /dev/input
 busybox mkdir -m 555 -p /proc
 busybox mkdir -m 755 -p /sys
 
-# create device nodes
+# Create device nodes
 busybox mknod -m 600 /dev/block/mmcblk0 b 179 0
 busybox mknod -m 600 ${BOOTREC_EVENT_NODE}
 busybox mknod -m 666 /dev/null c 1 3
 
-# mount filesystems
+# Mount file-systems
 busybox mount -t proc proc /proc
 busybox mount -t sysfs sysfs /sys
 
-# keycheck
+# Initialize the Key-Check Process
 busybox echo '50' > /sys/class/timed_output/vibrator/enable
 busybox cat ${BOOTREC_EVENT} > /dev/keycheck&
 
-# LEDs activated
+# Activate LEDs
 echo '255' > $LED1_G_BRIGHTNESS_FILE
 echo '255' > $LED2_G_BRIGHTNESS_FILE
 echo '255' > $LED3_G_BRIGHTNESS_FILE
@@ -58,7 +76,7 @@ echo '255' > $LED1_R_BRIGHTNESS_FILE
 echo '255' > $LED2_R_BRIGHTNESS_FILE
 echo '255' > $LED3_R_BRIGHTNESS_FILE
 
-# LEDs starting animation
+# LEDs Starting animation
 echo '16' > $LED1_G_CURRENT_FILE
 echo '16' > $LED2_G_CURRENT_FILE
 echo '16' > $LED3_G_CURRENT_FILE
@@ -120,13 +138,17 @@ echo '0' > $LED1_R_CURRENT_FILE
 echo '0' > $LED2_R_CURRENT_FILE
 echo '0' > $LED3_R_CURRENT_FILE
 
-# android ramdisk
+# Load the System Ramdisk
 load_image=/sbin/ramdisk.cpio
 
-# boot decision
+#
+# Boot Decisions for the user
+#
+
+# If the user enters the key combination for Recovery, the Recovery is called in
 if [ -s /dev/keycheck ] || busybox grep -q warmboot=0x77665502 /proc/cmdline ; then
 	busybox echo 'RECOVERY BOOT' >>boot.txt
-	# LEDs for recovery
+	# LEDs Recovery Animation
 	busybox echo '100' > /sys/class/timed_output/vibrator/enable
 	echo '255' > $LED1_B_BRIGHTNESS_FILE
 	echo '255' > $LED2_B_BRIGHTNESS_FILE
@@ -157,7 +179,7 @@ if [ -s /dev/keycheck ] || busybox grep -q warmboot=0x77665502 /proc/cmdline ; t
 	echo '0' > $LED1_B_CURRENT_FILE
 	echo '0' > $LED2_B_CURRENT_FILE
 	echo '0' > $LED3_B_CURRENT_FILE
-	# recovery ramdisk
+	# Load Recovery Ramdisk
 	busybox mknod -m 600 ${BOOTREC_FOTA_NODE}
 	busybox mount -o remount,rw /
 	busybox ln -sf /sbin/busybox /sbin/sh
@@ -165,8 +187,9 @@ if [ -s /dev/keycheck ] || busybox grep -q warmboot=0x77665502 /proc/cmdline ; t
 	busybox rm /sbin/sh
 	load_image=/sbin/ramdisk-recovery.cpio
 else
+	# If nothing occurs, the device boots to the system
 	busybox echo 'ANDROID BOOT' >>boot.txt
-	# LEDs for Android
+	# LEDs System Animation
 	echo '255' > $LED1_G_BRIGHTNESS_FILE
 	echo '255' > $LED2_G_BRIGHTNESS_FILE
 	echo '255' > $LED3_G_BRIGHTNESS_FILE
@@ -198,11 +221,11 @@ else
 	echo '0' > $LED3_G_CURRENT_FILE
 fi
 
-# kill the keycheck process
+# Kill the key-check process
 busybox pkill -f "busybox cat ${BOOTREC_EVENT}"
 busybox echo '0' > /sys/class/timed_output/vibrator/enable
 
-# unpack the ramdisk image
+# Unpack the selected ramdisk image
 busybox cpio -i < ${load_image}
 
 busybox umount /proc
