@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2015 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,17 +44,9 @@ public class DisplayColorCalibration {
     public static boolean isSupported() {
         return new File(COLOR_FILE).exists();
     }
-
-    /*
-     * What's the maximum integer value we take for a color
-     */
-
-    public static int getMaxValue() {
-        return 255;
-    }
-
-    /*
-     * What's the minimum integer value we take for a color
+	
+	    /*
+     * What's the minimum integer value we take for a colour
      */
 
     public static int getMinValue() {
@@ -62,7 +54,15 @@ public class DisplayColorCalibration {
     }
 
     /*
-     * What's the default integer value we take for a color
+     * What's the maximum integer value we take for a colour
+     */
+
+    public static int getMaxValue() {
+        return 255;
+    }
+
+    /*
+     * What's the default integer value we take for a colour
      */
 
     public static int getDefValue() {

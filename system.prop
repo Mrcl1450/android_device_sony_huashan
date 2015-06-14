@@ -1,19 +1,19 @@
 #
-# from device/somc/viskan/system.prop
+# Derived from device/somc/viskan/system.prop
 #
 
-#
-# system props for the data modules
-#
+
+# Data Network Manager
 ro.use_data_netmgrd=true
 
-#system props for time-services
+# Time-services
 persist.timed.enable=true
 
-#system prop for switching gps driver to qmi
+# GPS -> QMI
 persist.gps.qmienabled=true
 
 # FM radio
 hw.fm.internal_antenna=true
 
+# LCD Density
 ro.sf.lcd_density=320

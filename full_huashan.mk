@@ -1,4 +1,4 @@
-# Copyright (C) 2011 The Android Open Source Project
+# Copyright (C) 2015 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
 #
 #
 
+# Define Huashan Screen Size
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
@@ -31,7 +32,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Common Sony Resources
 $(call inherit-product, device/sony/common/resources.mk)
 
-# Inherit from huashan device makefile
+# Inherit from Huashan device makefile
 $(call inherit-product, device/sony/huashan/huashan.mk)
 
 # Set those variables here to overwrite the inherited values.

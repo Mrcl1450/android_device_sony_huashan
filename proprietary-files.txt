@@ -1,4 +1,4 @@
-# Copyright (C) 2011-2013 The CyanogenMod Project
+# Copyright (C) 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -63,7 +63,7 @@ lib/libmercury.so
 lib/libmmstillomx.so
 
 #
-# Camera Firmwire
+# Camera Firmware
 #
 vendor/camera/APT00YP1.dat
 vendor/camera/SMC08BS2.dat

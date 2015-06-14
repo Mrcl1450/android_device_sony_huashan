@@ -1,16 +1,16 @@
 Sony Xperia SP
 ==============
 
-The Sony Xperia SP (codenamed _"HuaShan"_) is a mid-range smartphone from Sony Mobile.
+The Sony Xperia SP (codenamed _"Huashan"_) is a mid-range smartphone from Sony Mobile.
 
 It was announced on 18 March 2013. It was supported in CyanogenMod 10.2 & 11, 12 and now supported by CyanogenMod 12.1
 
-Basic   | Spec Sheet
+Basic   | Specification Sheet
 -------:|:-------------------------
 CPU     | 1.7GHz Dual-Core MSM8960T
 GPU     | Adreno 320
 Memory  | 1GB RAM
-Shipped Android Version | 4.1.2
+Initial Android Version | 4.1.2
 Storage | 8GB
 Battery | 2370 mAh
 Display | 4.6" 1280 x 720 px
