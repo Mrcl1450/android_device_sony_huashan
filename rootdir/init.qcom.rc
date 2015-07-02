@@ -388,8 +388,8 @@ on post-fs-data
     chmod 664 /sys/module/msm_dcvs/cores/cpu0/slack_time_min_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_max_us
     chmod 664 /sys/module/msm_mpdecision/slack_time_min_us
-
     write /sys/devices/platform/msm_sdcc.3/idle_timeout 10
+    start mpdecision
 
 on charger
     write /sys/module/msm_fb/parameters/align_buffer 0
@@ -438,7 +438,7 @@ on property:bluetooth.hciattach=false
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
-    class late_start
+    class core
     user radio
     group radio audio bluetooth gps qcom_diag net_bt_stack
 
@@ -554,7 +554,7 @@ service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/us
     disabled
 
 service thermanager /system/bin/thermanager /system/etc/thermanager.xml
-    class core
+    class main
     user root
     group root
 
@@ -562,6 +562,7 @@ service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     class main
     user root
     group root system
+    disabled
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
