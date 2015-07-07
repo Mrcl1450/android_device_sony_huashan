@@ -187,6 +187,7 @@ lib/libs1sl.so
 lib/libsys-utils.so
 lib/libta.so
 lib/libthermalclient.so
+-lib/libtime_genoff.so
 vendor/camera/APT00YP1.dat
 vendor/camera/SMC08BS2.dat
 vendor/camera/SMC08BS2_IMX134.dat
@@ -226,7 +227,6 @@ vendor/lib/libqti-perfd-client.so
 vendor/lib/libquipc_os_api.so
 vendor/lib/libquipc_ulp_adapter.so
 vendor/lib/libsc-a3xx.so
--vendor/lib/libtime_genoff.so
 vendor/lib/libulp2.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
