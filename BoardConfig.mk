@@ -35,6 +35,9 @@ BOARD_KERNEL_CMDLINE  := device/sony/huashan/rootdir/cmdline.txt
 BOARD_KERNEL_RPMBIN   := vendor/sony/huashan/proprietary/boot/RPM.bin
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000
 
+# Use legacy MMAP for pre-lollipop blobs
+BOARD_USES_LEGACY_MMAP := true
+
 # Needed for blobs
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
