@@ -25,11 +25,18 @@ TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 BOARD_VENDOR_PLATFORM := viskan
 
-# Kernel information
-BOARD_KERNEL_BASE  := 0x80200000
+# Kernel informations
+BOARD_KERNEL_BASE     := 0x80200000
+BOARD_KERNEL_RAMDISK  := 0x81900000
+BOARD_KERNEL_RPM      := 0x00020000
+BOARD_KERNEL_ZIMAGE   := 0x80208000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE  := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
+BOARD_KERNEL_CMDLINE  := device/sony/huashan/rootdir/cmdline.txt
+BOARD_KERNEL_RPMBIN   := vendor/sony/huashan/proprietary/boot/RPM.bin
+BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000
+
+# Use legacy MMAP for pre-lollipop blobs
+BOARD_USES_LEGACY_MMAP := true
 
 # Needed for blobs
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
@@ -100,6 +107,8 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_OTA_ASSERT_DEVICE := C5302,C5303,C5306,huashan
 
 # Audio
+BOARD_USES_LEGACY_ALSA_AUDIO := true
+TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 BOARD_HAVE_CSD_FAST_CALL_SWITCH := true
 BOARD_USES_FLUENCE_INCALL := true
