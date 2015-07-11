@@ -67,19 +67,9 @@ on fs
     chmod 0555 /lta-label
 
     # SONY: Start the TrimArea Daemon.
-    class_start trimarea
     start tad_static
     exec /sbin/wait4tad_static
 
-    # SONY: Start early TA-users
-    exec /system/bin/taimport
-    start ta_qmi_service
-
-    restorecon /data/etc/bluetooth_bdaddr
-    restorecon /data/etc/wlan_macaddr0
-    restorecon /data/etc/wlan_macaddr1
-    restorecon /data/etc/wlan_macaddr2
-    restorecon /data/etc/wlan_macaddr3
     restorecon /data/misc/audio/mbhc.bin
     restorecon /data/misc/audio/wcd9310_anc.bin
 
@@ -284,6 +274,16 @@ on post-fs-data
     # Enable Power save functionality for modem
     setprop persist.radio.add_power_save 1
 
+    # SONY: Start early TA-users
+    mkdir /data/etc 0755 root shell
+    exec /system/bin/taimport
+
+    restorecon /data/etc/bluetooth_bdaddr
+    restorecon /data/etc/wlan_macaddr0
+    restorecon /data/etc/wlan_macaddr1
+    restorecon /data/etc/wlan_macaddr2
+    restorecon /data/etc/wlan_macaddr3
+
     # Camera
     mkdir /data/camera 0771 root camera
 
@@ -444,13 +444,12 @@ service qmuxd /system/bin/qmuxd
 
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
-service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
-    class core
+service tad_static /system/bin/tad_static /dev/block/mmcblk0 1,16
     user root
     group root
     socket tad stream 0660 system system
-    disabled
 
+# SONY: Update MiscTA
 service updatemiscta /system/bin/updatemiscta
     class main
     user root
@@ -538,7 +537,7 @@ service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
     oneshot
 
 on property:ro.data.large_tcp_window_size=true
-    # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
+# Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
 # virtual sdcard daemon running as media_rw (1023)
@@ -581,11 +580,14 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
     user root
     oneshot
 
-# Trim Area QMI service
-service ta_qmi_service /system/bin/ta_qmi_service
-    class late_start
+# SONY: Trim Area QMI client
+# Should have the same class as qmuxd, to be sure that it will be restarted in same way
+# as qmuxd if phone is encrypted. This is a workaround, because sometimes
+# QMI_SYS_EVENT_MODEM_OUT_OF_SERVICE_IND is not sending if qmuxd is terminated during decryption,
+# so, ta_qmi_client was not notified that connection to the TA Service on MDM is lost.
+service ta_qmi_client /system/bin/ta_qmi_client
+    class main
     user root
-    disabled
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
