@@ -77,6 +77,9 @@ TARGET_NO_RPC := true
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/huashan/bluetooth
 
+# Healthd
+BOARD_CHARGER_ENABLE_SUSPEND := true
+
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 
