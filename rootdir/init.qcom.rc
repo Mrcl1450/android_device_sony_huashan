@@ -587,10 +587,6 @@ service ta_qmi_service /system/bin/ta_qmi_service
     user root
     disabled
 
-service bbset /system/bin/sh /system/etc/init.qcom.baseband.sh
-    class late_start
-    oneshot
-
 service wcnss-service /system/bin/wcnss_service
     class late_start
     user system
