@@ -87,6 +87,8 @@ on boot
     # Bring CPUs online early
     write /sys/devices/system/cpu/cpu1/online 1
 
+    start qcamerasvr
+
     exec /system/bin/btnvtool -O
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
@@ -547,6 +549,11 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/sd
 service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
+
+service qcamerasvr /system/bin/mm-qcamera-daemon
+    class late_start
+    user camera
+    group camera system inet input graphics net_bt_stack
 
 service thermanager /system/bin/thermanager /system/etc/thermanager.xml
     class main
