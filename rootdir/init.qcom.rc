@@ -588,7 +588,7 @@ service ta_qmi_client /system/bin/ta_qmi_client
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
-    user system
+    user root
     group system wifi
     oneshot
 
