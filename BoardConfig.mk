@@ -157,3 +157,158 @@ BOARD_SEPOLICY_UNION += \
 
 # inherit from the proprietary version
 -include vendor/sony/huashan/BoardConfigVendor.mk
+
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+  ifeq ($(TARGET_BUILD_VARIANT),user)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+DONT_DEXPREOPT_PREBUILTS := true
+
+#
+# Optimization Flags for GCC are defined below and applied at the final definition
+#
+
+# Graphite Flags
+OPT1 := (graphite)
+GRAPHITE_FLAGS := \
+  -fgraphite \
+  -fgraphite-identity \
+  -floop-flatten \
+  -floop-parallelize-all \
+  -ftree-loop-linear \
+  -floop-interchange \
+  -floop-strip-mine \
+  -floop-block \
+  -Wno-error=maybe-uninitialized
+
+# Disables Graphite for modules that are not compatible with  the Graphite Flags
+LOCAL_DISABLE_GRAPHITE := \
+  libmincrypt \
+  mkbootimg \
+  mkbootfs \
+  libhost \
+  ibext2_profile \
+  make_ext4fs \
+  hprof-conv \
+  acp \
+  libsqlite \
+  libsqlite_jni \
+  simg2img_host \
+  e2fsck \
+  append2simg \
+  build_verity_tree \
+  sqlite3 \
+  e2fsck_host \
+  libext2_profile_host \
+  libext2_quota_host \
+  libext2fs_host\
+  libbz\
+  make_f2fs\
+  imgdiff\
+  bsdiff \
+  libedify \
+  fs_config \
+  unpackbootimg \
+  mkyaffs2image \
+  libext2_com_err_host \
+  libext2_blkid_host \
+  libext2_e2p_host\
+  libcrypto-host \
+  libexpat-host \
+  libicuuc-host \
+  libicui18n-host \
+  dmtracedump \
+  libsparse_host \
+  libz-host \
+  libfdlibm \
+  libsqlite3_android \
+  libssl-host \
+  libf2fs_dlutils_host \
+  libf2fs_utils_host \
+  libf2fs_ioutils_host \
+  libf2fs_fmt_host_dyn \
+  libext2_uuid_host \
+  minigzip \
+  libdex \
+  dexdump \
+  dexlist \
+  libext4_utils_host \
+  third_party_protobuf_protoc_arm_host_gyp \
+  libaapt \
+  aapt \
+  fastboot  \
+  libpng \
+  aprotoc \
+  fio \
+  fsck.f2fs \
+  libandroidfw \
+  libbacktrace_test \
+  liblog \
+  libgtest_host \
+  libbacktrace_libc++ \
+  v8_tools_gyp_v8_nosnapshot_arm_host_gyp \
+  third_party_icu_icui18n_arm_host_gyp \
+  third_party_icu_icuuc_arm_host_gyp \
+  tird_party_protobuf_protobuf_full_do_not_use_arm_host_gyp \
+  third_party_protobuf_protobuf_full_do_not_use_arm_host_gyp \
+  v8_tools_gyp_mksnapshot_arm_host_gyp \
+  third_party_libvpx_libvpx_obj_int_extract_arm_host_gyp \
+  libutils \
+  libcutils \
+  libexpat \
+  v8_tools_gyp_v8_base_arm_host_gyp \
+  v8_tools_gyp_v8_libbase_arm_host_gyp \
+  v8_tools_gyp_v8_libbase_arm_host_gyp_32 \
+  aidl \
+  libziparchive-host \
+  libcrypto_static \
+  libunwind-ptrace \
+  libgtest_main_host \
+  libbacktrace \
+  backtrace_test \
+  libzopfli \
+  zipalign \
+  rsg-generator \
+  unrar \
+  libunz \
+  adb \
+  libzipfile \
+  rsg-generator_support \
+  libunwindbacktrace \
+  libc_common \
+  libz \
+  libselinux \
+  checkfc \
+  checkseapp \
+  checkpolicy \
+  libsepol \
+  libpcre \
+  libunwind \
+  libFFTEm \
+  libicui18n \
+  libskia \
+  libvpx \
+  libmedia_jni \
+  libstagefright_mp3dec \
+  libart \
+  mdnsd \
+  libwebrtc_spl \
+  third_party_WebKit_Source_core_webcore_svg_gyp \
+  libjni_filtershow_filters \
+  libavformat \
+  libavcodec \
+  skia_skia_library_gyp \
+  libFraunhoferAAC
+
+# Utilize O3 Optimization
+OPT3 := (O3)
+
+# Utilize the Strict Flag for GCC
+OPT4 := (krait)
+
+# Here we define all the GCC Optimization in a single line if they are uncommented
+GCC_OPTIMIZATION_LEVELS := $(OPT1)$(OPT2)$(OPT3)$(OPT4)
