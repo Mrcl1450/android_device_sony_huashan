@@ -57,6 +57,11 @@ BOARD_USE_SONY_MACUPDATE := true
 
 BOARD_HARDWARE_CLASS := device/sony/huashan/cmhw
 
+# Enable dex-preoptimization
+WITH_DEXPREOPT := true
+WITH_DEXPREOPT_COMP := true
+DONT_DEXPREOPT_PREBUILTS := true
+
 # Sensors
 SOMC_CFG_SENSORS := true
 SOMC_CFG_SENSORS_ACCELEROMETER_LSM303DLHC_LT := yes
