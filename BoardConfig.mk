@@ -145,6 +145,8 @@ TARGET_USES_C2D_COMPOSITION := true
 
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+HAVE_ADRENO_SOURCE := false
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -172,7 +174,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1056964608
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
 
 # Include common SE policies
--include device/qcom/sepolicy/sepolicy.mk
+#-include device/qcom/sepolicy/sepolicy.mk
 
 #BOARD_SEPOLICY_DIRS += device/sony/huashan/sepolicy
 
