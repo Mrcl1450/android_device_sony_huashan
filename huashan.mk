@@ -240,6 +240,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.qcom
 
+# STLPort 
+PRODUCT_PACKAGES += \
+    libstlport
+
 # Thermal management
 PRODUCT_PACKAGES += \
     thermanager
