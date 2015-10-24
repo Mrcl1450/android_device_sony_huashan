@@ -244,6 +244,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libstlport
 
+# BoringSSL compat symbols wrapper
+PRODUCT_PACKAGES += \
+    libboringssl-compat
+
 # Thermal management
 PRODUCT_PACKAGES += \
     thermanager
