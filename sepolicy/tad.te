@@ -1,0 +1,9 @@
+type tad, domain;
+type tad_exec, exec_type, file_type;
+
+init_daemon_domain(tad)
+
+allow tad block_device:dir { search };
+allow tad mmc_block_device:blk_file { read write };
+allow tad mmc_block_device:blk_file { open };
+allow tad mmc_block_device:blk_file { ioctl };

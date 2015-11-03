@@ -1,0 +1,15 @@
+type ta_qmi, domain;
+type ta_qmi_exec, exec_type, file_type;
+
+init_daemon_domain(ta_qmi)
+
+allow ta_qmi smem_log_device:chr_file { read write open ioctl };
+allow ta_qmi sysfs_wake_lock:file { append open };
+allow ta_qmi self:socket { create ioctl bind read write };
+allow ta_qmi self:capability { dac_override };
+
+allow ta_qmi socket_device:sock_file { write };
+
+# Connect to /dev/socket/tad
+unix_socket_connect(ta_qmi, tad, tad)
+

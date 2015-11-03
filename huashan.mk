@@ -46,11 +46,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
     $(LOCAL_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
+    $(LOCAL_PATH)/rootdir/system/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
     $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
 # Additional sbin stuff
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
     $(LOCAL_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
 # Key layouts
@@ -112,6 +112,10 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
+
+# MAC address - BT and Wi-Fi
+PRODUCT_PACKAGES += \
+    macaddrsetup
 
 # NFC Support
 PRODUCT_PACKAGES += \
@@ -214,7 +218,6 @@ PRODUCT_PACKAGES += \
 
 # Wifi service
 PRODUCT_PACKAGES += \
-    mac-update \
     wcnss_service
 
 PRODUCT_PACKAGES += \
@@ -307,6 +310,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd \
+    ro.bt.bdaddr_path=/data/misc/bluetooth/bdaddr \
     qcom.bt.le_dev_pwr_class=1
 
 # WiFi

@@ -177,6 +177,8 @@ BOARD_SEPOLICY_DIRS += \
     device/sony/huashan/sepolicy
 
 BOARD_SEPOLICY_UNION += \
+    bluetooth.te \
+    device.te \
     file_contexts \
     file.te \
     healthd.te \
@@ -184,7 +186,7 @@ BOARD_SEPOLICY_UNION += \
     init.te \
     init_shell.te \
     kernel.te \
-    mac_update.te \
+    macaddrsetup.te \
     mediaserver.te \
     mpdecision.te \
     netd.te \
@@ -201,10 +203,10 @@ BOARD_SEPOLICY_UNION += \
     surfaceflinger.te \
     system_app.te \
     system_server.te \
-    tad_static.te \
-    ta_qmi_service.te \
+    tad.te \
+    ta_qmi.te \
     thermanager.te \
-    updatemiscta.te \
+    time_daemon.te \
     vold.te
 
 # inherit from the proprietary version
