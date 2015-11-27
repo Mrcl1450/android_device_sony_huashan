@@ -155,6 +155,9 @@ on boot
     write /sys/block/mmcblk0/queue/add_random 0
     write /sys/block/mmcblk1/queue/add_random 0
 
+    write /sys/block/mmcblk0/queue/iosched/slice_idle 0		
+    write /sys/block/mmcblk1/queue/iosched/slice_idle 0
+
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
     # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  2097152
